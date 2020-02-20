@@ -1,3 +1,5 @@
+//const OrganizationModel = require('../model');
+
 module.exports = [
   { 
     method: "GET",
@@ -48,5 +50,22 @@ module.exports = [
       return h.response(error).code(500);
   }
   }
+},
+{
+  method: "POST",
+  path: "/organization",
+  options: {
+      validate: {}
+  },
+  handler: async (request, h) => {
+      try {
+          var org = new OrganizationModel(request.payload);
+          var result = await org.save();
+          return h.response(result);
+      } catch (error) {
+          return h.response(error).code(500);
+      }
+  }
 }
 ];
+
