@@ -1,4 +1,4 @@
-FROM node:10
+FROM node:latest
 
 WORKDIR /app
 
@@ -12,7 +12,7 @@ RUN npm install
 # RUN npm ci --only=production
 
 # Bundle app source
-COPY . /app
+COPY . .
 
-#EXPOSE 3000
-CMD [ "node", "index.js" ]
+EXPOSE 3000
+CMD [ "node", "app.js" ]
